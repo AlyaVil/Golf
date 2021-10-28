@@ -1,0 +1,71 @@
+let ballX;
+let ballY;
+let radius;
+let ballSpeed;
+let randomX
+let randomY
+let ballSize
+function setup() {
+	background(247, 247, 124);
+	createCanvas(400, 600);
+	ballX = width / 2;
+	ballY = height / 2;
+	ballSpeed = 2;
+	randomX = random(200)
+	randomY = random(100, 500)
+	ballSize = 20
+}
+//moss did a little bit of this
+
+
+function draw() {
+	background(247, 247, 124);
+
+	textSize(22);
+	text('USE THE ARROW KEYS TO', 50, 50);
+	fill(0, 102, 153);
+	textSize(22);
+	text('GET THE BALL IN THE HOLE TO WIN', 5, 78);
+	fill(0, 102, 153);
+	//grass
+	fill(50, 137, 60);
+	noStroke();
+	rect(0, 100, 400, 800);
+	//hole
+	stroke(0);
+	strokeWeight(3)
+	fill(255, 255, 255);
+	ellipse(randomX, randomY+150, 20);
+	//flag
+	stroke(0);
+	strokeWeight(4);
+	line(randomX, randomY, randomX, randomY + 150);
+	fill(255, 255, 255);
+	triangle(randomX, randomY, randomX, randomY + 50, randomX + 100, randomY + 25);
+	//ball
+	strokeWeight(1);
+	fill(255);
+	stroke(0);
+	ellipse(ballX, ballY, ballSize);
+	//text(round(mouseX) + ", " + round(mouseY), 100, 100);
+	if (keyIsPressed) {
+		if ((keyCode == LEFT_ARROW) && (ballX > 25)) {
+			ballX -= ballSpeed;
+		} else if ((keyCode == RIGHT_ARROW) && (ballX < width - 25)) {
+			ballX += ballSpeed;
+		} else if ((keyCode == UP_ARROW) && (ballY > 25)) {
+			ballY -= ballSpeed;
+		} else if ((keyCode == DOWN_ARROW) && (ballY < height - 25)) {
+			ballY += ballSpeed;
+			// from classroom
+		}
+	}
+
+	if (dist(ballX, ballY, randomX, randomY + 150) <= 20) {
+		textSize(75);
+	ballSize = 0
+		text("You Win!", 50, 350)
+		text("🎉", 50,450 )
+	}
+
+}
