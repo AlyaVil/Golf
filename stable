@@ -65,7 +65,7 @@ function draw() {
 		textSize(75);
 	ballSize = 0
 		text("You Win!", 50, 350)
-		text("🎉", 50,450 )
+	
 	}
 
 }
